@@ -34,7 +34,7 @@ import org.pac4j.core.profile.CommonProfile;
 
 /**
  * This class specializes the RolesAuthorizationFilter to have a login url which is the redirection url to the provider.
- * 
+ *
  * @author Jerome Leleu
  * @since 1.0.0
  */
@@ -53,6 +53,10 @@ public class ClientRolesAuthorizationFilter extends RolesAuthorizationFilter {
             this.client.redirect(new ShiroWebContext(WebUtils.toHttp(request), WebUtils.toHttp(response)), true, false);
         } catch (RequiresHttpAction e) {
         }
+    }
+
+    public BaseClient<Credentials, CommonProfile> getClient() {
+        return this.client;
     }
 
     public void setClient(final BaseClient<Credentials, CommonProfile> client) {
